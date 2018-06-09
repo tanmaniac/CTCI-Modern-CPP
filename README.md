@@ -1,6 +1,6 @@
 # Cracking the Coding Interview - C++ solutions
 
-Modern C++ solutions to Cracking the Coding Interview (6th edition). Also a way for me to experiment with (Bazel)[https://www.bazel.build/].
+Modern C++ solutions to Cracking the Coding Interview (6th edition). Also a way for me to experiment with [Bazel](https://www.bazel.build/).
 
 ## Building
 
@@ -10,7 +10,7 @@ bazel build ...
 
 ## Running tests
 
-Test are built with (googletest)[https://github.com/google/googletest]. To run them:
+Test are built with [googletest](https://github.com/google/googletest). To run them:
 
 ```bash
 bazel test ... {--test_output=all}
