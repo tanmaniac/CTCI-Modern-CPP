@@ -3,3 +3,6 @@
 /bazel-genfiles
 /bazel-out
 /bazel-testlogs
+
+# Visual Studio Code workspace files
+/.vscode
