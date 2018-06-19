@@ -7,6 +7,12 @@
 #pragma GCC optimize("unroll-loops")
 
 namespace arrays {
+/**
+ * \brief Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
+ * column are set to O.
+ *
+ * \param input M x N input array.
+ */
 template <typename T, size_t rows, size_t cols>
 void zeroMatrix(std::array<std::array<T, cols>, rows>& input) {
     // Make sure the input is arithmetic
