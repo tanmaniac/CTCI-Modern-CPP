@@ -1,5 +1,7 @@
 # Cracking the Coding Interview - C++ solutions
 
+[![Build Status](https://travis-ci.com/tanmaniac/CTCI-Modern-CPP.svg?branch=master)](https://travis-ci.com/tanmaniac/CTCI-Modern-CPP)
+
 Modern C++ solutions to Cracking the Coding Interview (6th edition). Also a way for me to experiment with [Bazel](https://www.bazel.build/).
 
 ## Building

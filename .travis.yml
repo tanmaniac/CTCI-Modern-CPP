@@ -1,0 +1,24 @@
+dist: bionic
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - wget
+      - pkg-config
+      - zip
+      - g++
+      - zliblg-dev
+      - unzip
+      - python
+
+before_install:
+  - wget https://github.com/bazelbuild/bazel/releases/download/0.14.1/bazel-0.14.1-installer-linux-x86_64.sh
+  - sha256sum -c external/bazel-0.14.1-installer-linux-x86_64.sh.sha256
+  - chmod +x bazel-0.14.1-installer-linux-x86_64.sh
+  - ./bazel-0.14.1-installer-linux-x86_64.sh --user
+
+script:
+  - export PATH="$PATH:$HOME/bin"
+  - bazel test ... --test_output=all
