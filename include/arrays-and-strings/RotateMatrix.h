@@ -3,7 +3,7 @@
 #include <array>
 #include <string>
 
-namespace strings {
+namespace arrays {
 /**
  * \brief  Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes,
  * write a method to rotate the image by 90 degrees.
@@ -28,4 +28,4 @@ void rotateMatrix(std::array<std::array<uint32_t, N>, N>& input) {
         }
     }
 }
-} // namespace strings
+} // namespace arrays

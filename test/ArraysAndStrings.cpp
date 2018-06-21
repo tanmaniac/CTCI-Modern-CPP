@@ -4,6 +4,7 @@
 #include "include/arrays-and-strings/PermutationPalindrome.h"
 #include "include/arrays-and-strings/RotateMatrix.h"
 #include "include/arrays-and-strings/StringCompression.h"
+#include "include/arrays-and-strings/StringRotation.h"
 #include "include/arrays-and-strings/URLify.h"
 #include "include/arrays-and-strings/ZeroMatrix.h"
 
@@ -75,7 +76,7 @@ TEST(STRINGS, COMPRESSION) {
     }
 }
 
-TEST(STRINGS, ROTATE_MATRIX) {
+TEST(ARRAYS, ROTATE_MATRIX) {
     std::array<std::array<uint32_t, 6>, 6> input = {{{1, 2, 3, 4, 5, 6},
                                                      {7, 8, 9, 10, 11, 12},
                                                      {13, 14, 15, 16, 17, 18},
@@ -90,7 +91,7 @@ TEST(STRINGS, ROTATE_MATRIX) {
                                                               {35, 29, 23, 17, 11, 5},
                                                               {36, 30, 24, 18, 12, 6}}};
 
-    strings::rotateMatrix(input);
+    arrays::rotateMatrix(input);
 
     // Verify output
     for (int y = 0; y < 6; y++) {
@@ -122,4 +123,14 @@ TEST(ARRAYS, ZERO_MATRIX) {
             EXPECT_EQ(input[y][x], expectedOutput[y][x]);
         }
     }
+}
+
+TEST(STRINGS, STRING_ROTATION) {
+    const std::string s1 = "waterbottle";
+    const std::string s2 = "erbottlewat";
+
+    EXPECT_TRUE(strings::isRotation(s1, s2));
+
+    const std::string s3 = "erbattlewat";
+    EXPECT_FALSE(strings::isRotation(s1, s3));
 }
