@@ -6,5 +6,6 @@ cc_test(
         "@gtest//:gtest",
         "@gtest//:gtest_main",
         "//include/arrays-and-strings:arrays-and-strings",
+        "//include/linked-lists:linked-lists",
     ],
 )
