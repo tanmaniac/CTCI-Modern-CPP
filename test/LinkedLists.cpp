@@ -1,3 +1,4 @@
+#include "include/linked-lists/DelMiddleNode.h"
 #include "include/linked-lists/KthToLast.h"
 #include "include/linked-lists/LinkedList.h"
 #include "include/linked-lists/RemoveDups.h"
@@ -64,4 +65,34 @@ TEST(LINKED_LISTS, KTH_TO_LAST) {
     EXPECT_EQ(linkedlists::kthToLast(testList, k), 6);
 
     EXPECT_EQ(1, 1);
+}
+
+TEST(LINKED_LISTS, DEL_MIDDLE_NODE) {
+    std::vector<int> testVec{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}};
+
+    ll::ForwardList<int> testList;
+    for (const auto& val : testVec) {
+        testList.appendToTail(val);
+    }
+
+    // Get the 6th node (value = 5)
+    auto head = testList.getHead();
+    for (int i = 0; i < 6; i++) {
+        head = head->_next;
+    }
+    // sanity check
+    EXPECT_EQ(head->_value, testVec[6]);
+
+    linkedlists::delMiddleNode(head);
+
+    testVec.erase(testVec.begin() + 6);
+
+    head = testList.getHead();
+    int i = 0;
+    while (head != nullptr) {
+        EXPECT_EQ(head->_value, testVec[i]);
+        head = head->_next;
+        i++;
+    }
+    EXPECT_EQ(i, testVec.size());
 }
