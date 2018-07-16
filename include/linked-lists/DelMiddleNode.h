@@ -11,6 +11,8 @@ namespace linkedlists {
  * node. This solution requires that the templated class wrapped by the Linked List supports move
  * semantics.
  *
+ * Runtime complexity: O(N). Space complexity: O(1).
+ *
  * EXAMPLE
  * Input: the node c from the linked list a - >b- >c - >d - >e- >f
  * Result: nothing is returned, but the new linked list looks like a - >b- >d - >e- >f
