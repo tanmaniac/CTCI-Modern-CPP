@@ -52,6 +52,7 @@ public:
     }
 
     nodePtr getHead() { return _head; }
+    nodePtr getTail() { return _tail; }
     const size_t size() const { return _size; }
 };
 } // namespace ll

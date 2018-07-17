@@ -1,6 +1,7 @@
 #include "include/linked-lists/DelMiddleNode.h"
 #include "include/linked-lists/KthToLast.h"
 #include "include/linked-lists/LinkedList.h"
+#include "include/linked-lists/Partition.h"
 #include "include/linked-lists/RemoveDups.h"
 
 #include "gtest/gtest.h"
@@ -95,4 +96,32 @@ TEST(LINKED_LISTS, DEL_MIDDLE_NODE) {
         i++;
     }
     EXPECT_EQ(i, testVec.size());
+}
+
+TEST(LINKED_LISTS, PARTITION) {
+    std::vector<int> testVec{{3, 5, 8, 5, 10, 2, 1}};
+    const int partitionVal = 5;
+
+    ll::ForwardList<int> testList;
+    for (const auto& val : testVec) {
+        testList.appendToTail(val);
+    }
+
+    ll::ForwardList<int> partitioned = linkedlists::partition(testList, partitionVal);
+
+    bool lessThan = true;
+    auto head = partitioned.getHead();
+    while (head != nullptr) {
+        if (head->_value >= partitionVal) {
+            // flip switch
+            lessThan = false;
+        }
+        if (lessThan) {
+            EXPECT_LT(head->_value, partitionVal);
+        } else {
+            EXPECT_GE(head->_value, partitionVal);
+        }
+
+        head = head->_next;
+    }
 }
