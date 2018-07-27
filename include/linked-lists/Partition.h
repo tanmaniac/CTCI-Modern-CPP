@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LinkedList.h"
+#include "ForwardList.h"
 
 namespace linkedlists {
 /**
@@ -31,10 +31,10 @@ ll::ForwardList<T> partition(ll::ForwardList<T>& list, const T partitionVal) {
     ll::ForwardList<T> left, right;
 
     while (head != nullptr) {
-        if (head->_value < partitionVal) {
-            left.appendToTail(head->_value);
+        if (head->value() < partitionVal) {
+            left.appendToTail(head->value());
         } else {
-            right.appendToTail(head->_value);
+            right.appendToTail(head->value());
         }
         head = head->_next;
     }

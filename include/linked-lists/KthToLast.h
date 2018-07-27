@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LinkedList.h"
+#include "ForwardList.h"
 
 #include <sstream>
 #include <stdexcept>
@@ -45,6 +45,6 @@ T kthToLast(ll::ForwardList<T>& list, const size_t k) {
     }
 
     // head points to the kth to last node
-    return head->_value;
+    return head->value();
 }
 } // namespace linkedlists

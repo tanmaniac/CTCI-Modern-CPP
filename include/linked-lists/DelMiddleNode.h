@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LinkedList.h"
+#include "ForwardList.h"
 
 #include <memory>
 
@@ -29,7 +29,7 @@ void delMiddleNode(std::shared_ptr<ll::ForwardListNode<T>>& delNode) {
     // current node
     auto curNode = delNode;
     while (curNode->_next != nullptr) {
-        curNode->_value = curNode->_next->_value;
+        curNode->value() = curNode->_next->value();
         if (curNode->_next->_next == nullptr) {
             // We're at the second to last node, so now just delete the last node
             curNode->_next = nullptr;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LinkedList.h"
+#include "ForwardList.h"
 
 #include <unordered_set>
 
@@ -20,8 +20,8 @@ void removeDups(ll::ForwardList<T>& list) {
     std::unordered_set<T> values;
 
     while (head != nullptr && head->_next != nullptr) {
-        values.insert(head->_value);
-        if (values.find(head->_next->_value) != values.end()) {
+        values.insert(head->value());
+        if (values.find(head->_next->value()) != values.end()) {
             // Value already exists in the list
             head->_next = head->_next->_next;
         }
