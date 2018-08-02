@@ -3,6 +3,7 @@
 #include "include/linked-lists/KthToLast.h"
 #include "include/linked-lists/Partition.h"
 #include "include/linked-lists/RemoveDups.h"
+#include "include/linked-lists/SumLists.h"
 
 #include "gtest/gtest.h"
 
@@ -132,5 +133,29 @@ TEST(LINKED_LISTS, PARTITION) {
         }
 
         head = head->_next;
+    }
+}
+
+TEST(LINKED_LISTS, SUM_LISTS) {
+    std::vector<int> testVec1{{7, 1, 6}};
+    std::vector<int> testVec2{{5, 9, 4}};
+
+    ll::ForwardList<int> list1, list2;
+    for (const auto& val : testVec1) {
+        list1.appendToTail(val);
+    }
+    for (const auto& val : testVec2) {
+        list2.appendToTail(val);
+    }
+
+    ll::ForwardList<int> sum = linkedlists::sumLists(list1, list2);
+
+    std::vector<int> expectedOut{{2, 1, 1, 1}};
+    auto head = sum.getHead();
+    size_t idx = 0;
+    while (head != nullptr) {
+        EXPECT_EQ(head->value(), expectedOut[idx]);
+        head = head->_next;
+        idx++;
     }
 }
