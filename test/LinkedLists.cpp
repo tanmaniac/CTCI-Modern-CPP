@@ -1,6 +1,7 @@
 #include "include/linked-lists/DelMiddleNode.h"
 #include "include/linked-lists/ForwardList.h"
 #include "include/linked-lists/KthToLast.h"
+#include "include/linked-lists/Palindrome.h"
 #include "include/linked-lists/Partition.h"
 #include "include/linked-lists/RemoveDups.h"
 #include "include/linked-lists/SumLists.h"
@@ -158,4 +159,18 @@ TEST(LINKED_LISTS, SUM_LISTS) {
         head = head->_next;
         idx++;
     }
+}
+
+TEST(LINKED_LISTS, PALINDROME) {
+    ll::ForwardList<int> listEven{{1, 2, 3, 4, 5, 4, 3, 2, 1}};
+    ll::ForwardList<int> listOdd{{1, 2, 3, 4, 5, 5, 4, 3, 2, 1}};
+
+    EXPECT_TRUE(linkedlists::isPalindrome(listEven.getHead()));
+    EXPECT_TRUE(linkedlists::isPalindrome(listOdd.getHead()));
+
+    // Modify lists so they're no longer palindromes
+    listEven.appendToTail(0);
+    listOdd.appendToTail(0);
+    EXPECT_FALSE(linkedlists::isPalindrome(listEven.getHead()));
+    EXPECT_FALSE(linkedlists::isPalindrome(listOdd.getHead()));
 }
