@@ -1,5 +1,6 @@
 #include "include/linked-lists/DelMiddleNode.h"
 #include "include/linked-lists/ForwardList.h"
+#include "include/linked-lists/Intersection.h"
 #include "include/linked-lists/KthToLast.h"
 #include "include/linked-lists/Palindrome.h"
 #include "include/linked-lists/Partition.h"
@@ -173,4 +174,21 @@ TEST(LINKED_LISTS, PALINDROME) {
     listOdd.appendToTail(0);
     EXPECT_FALSE(linkedlists::isPalindrome(listEven.getHead()));
     EXPECT_FALSE(linkedlists::isPalindrome(listOdd.getHead()));
+}
+
+TEST(LINKED_LISTS, INTERSECTION) {
+    ll::ForwardList<int> list1{{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}};
+    // Shift forward and tack on some more nodes
+    auto head1 = list1.getHead();
+    for (int i = 0; i < 4; i++) {
+        head1 = head1->_next;
+    }
+    ll::ForwardList<int> list2{{11, 12}};
+    list2.getTail()->_next = head1;
+
+    EXPECT_EQ(linkedlists::intersects(list1.getHead(), list2.getHead()), head1);
+
+    // Try with a non-intersection
+    ll::ForwardList<int> list3{{13, 14, 15, 16, 17}};
+    EXPECT_EQ(linkedlists::intersects(list1.getHead(), list3.getHead()), nullptr);
 }
