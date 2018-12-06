@@ -2,6 +2,7 @@
 #include "include/linked-lists/ForwardList.h"
 #include "include/linked-lists/Intersection.h"
 #include "include/linked-lists/KthToLast.h"
+#include "include/linked-lists/LoopDetection.h"
 #include "include/linked-lists/Palindrome.h"
 #include "include/linked-lists/Partition.h"
 #include "include/linked-lists/RemoveDups.h"
@@ -191,4 +192,19 @@ TEST(LINKED_LISTS, INTERSECTION) {
     // Try with a non-intersection
     ll::ForwardList<int> list3{{13, 14, 15, 16, 17}};
     EXPECT_EQ(linkedlists::intersects(list1.getHead(), list3.getHead()), nullptr);
+}
+
+TEST(LINKED_LISTS, LOOP_DETECT) {
+    ll::ForwardList<char> list{{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+
+    EXPECT_EQ(linkedlists::loopDetect(list.getHead()), nullptr);
+
+    // Create a loop using the 'c' node
+    auto head = list.getHead();
+    for (int i = 0; i < 2; i++) {
+        head = head->_next;
+    }
+    list.getTail()->_next = head;
+
+    EXPECT_EQ(linkedlists::loopDetect(list.getHead()), head);
 }
